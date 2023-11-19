@@ -3,20 +3,18 @@ language: python
 python:
   - '3.8'
 install:
-  - pip3 install ansible molecule testinfra python-vagrant apache-libcloud urllib3==1.26.6
+  - pip3 install ansible molecule testinfra vagrant python-vagrant apache-libcloud urllib3==1.26.6
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd/mongodb
   - git version; ansible --version; molecule --version
+  - set
   - molecule create
   - molecule converge
   - molecule verify
 after_script:
   - molecule destroy
 before_install:
-  - wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-  - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-  - sudo apt update && sudo apt install -y ansible unzip git curl wget
   - git log -1 --format='%H'
   - git config --local gc.auto 0
   - git config --global --add safe.directory '*'
