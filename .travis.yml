@@ -6,9 +6,8 @@ install:
   - pip3 install ansible molecule testinfra python-vagrant apache-libcloud urllib3==1.26.6
 script:
   - find ~/ -name 'aasdhajkshd*'
-  - cd $HOME/build/aasdhajkshd
+  - cd $HOME/build/aasdhajkshd/mongodb
   - git version; ansible --version; molecule --version
-  - ls -Al $HOME/build/aasdhajkshd
   - molecule create
   - molecule converge
   - molecule verify
