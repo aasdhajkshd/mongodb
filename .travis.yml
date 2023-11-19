@@ -4,7 +4,6 @@ python:
   - '3.6'
 script:
   - find ~/ -name 'aasdhajkshd*'
-  - openssl aes-256-cbc -k "$vault_key_password" -in vault.key.enc -out ~/.ansible/vault.key -d
   - cd $HOME/build/aasdhajkshd
   - molecule create
   - molecule converge
