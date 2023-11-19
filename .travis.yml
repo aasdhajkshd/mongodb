@@ -7,6 +7,7 @@ install:
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd
+  - git version; ansible --version; molecule --version
   - molecule create
   - molecule converge
   - molecule verify
@@ -22,7 +23,6 @@ before_install:
   - mkdir -p $HOME/.ansible $HOME/ansible
   - ls -Alh $HOME/bin/; ls -Alh $HOME/
   - export PATH="${BIN}:$PATH"; echo $PATH
-  - git version; ansible --version; molecule --version
 notifications:
   email:
     on_success: change
