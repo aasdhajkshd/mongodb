@@ -22,10 +22,9 @@ before_install:
   - mkdir -p $HOME/.ansible $HOME/ansible
   - ls -Alh $HOME/bin/; ls -Alh $HOME/
   - export PATH="${BIN}:$PATH"; echo $PATH
-  - git version; ansible --version; molecule --version
   - echo -e "ansible>=2.4\nmolecule>=2.6\ntestinfra>=1.10\npython-vagrant>=0.5.15" > $HOME/ansible/requirements.txt
   - pip install -r $HOME/ansible/requirements.txt
-  - molecule --version 
+  - git version; ansible --version; molecule --version
 notifications:
   email:
     on_success: change
