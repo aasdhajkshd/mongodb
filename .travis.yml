@@ -3,7 +3,9 @@ language: python
 python:
   - '3.8'
 install:
-  - pip3 install ansible molecule testinfra vagrant python-vagrant apache-libcloud urllib3==1.26.6
+  - pip3 install ansible molecule testinfra vagrant python-vagrant apache-libcloud urllib3==1.26.6 docker yamllint flake8 ansible-lint molecule-docker
+services:
+  - docker
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd/mongodb
