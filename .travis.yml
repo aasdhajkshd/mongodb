@@ -1,0 +1,22 @@
+---
+language: python
+python:
+  - '3.6'
+install:
+  - pip install ansible==2.3.0 molecule apache-libcloud
+script:
+  - find ~/ -name 'aasdhajkshd*'
+  - openssl aes-256-cbc -k "$vault_key_password" -in vault.key.enc -out ~/.ansible/vault.key -d
+  - molecule create
+  - molecule converge
+  - molecule verify
+after_script:
+  - molecule destroy
+before_install:
+  - git log -1 --format='%H'
+  - git config --local gc.auto 0
+  - git config --global --add safe.directory '*'
+notifications:
+  email:
+    on_success: change
+    on_failure: always
