@@ -8,6 +8,7 @@ script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd
   - git version; ansible --version; molecule --version
+  - ls -Al $HOME/build/aasdhajkshd
   - molecule create
   - molecule converge
   - molecule verify
