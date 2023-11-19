@@ -2,11 +2,10 @@
 language: python
 python:
   - '3.6'
-install:
-  - pip install ansible==2.3.0 molecule apache-libcloud
 script:
   - find ~/ -name 'aasdhajkshd*'
   - openssl aes-256-cbc -k "$vault_key_password" -in vault.key.enc -out ~/.ansible/vault.key -d
+  - cd $HOME/build/aasdhajkshd
   - molecule create
   - molecule converge
   - molecule verify
@@ -22,7 +21,7 @@ before_install:
   - mkdir -p $HOME/.ansible $HOME/ansible
   - ls -Alh $HOME/bin/; ls -Alh $HOME/
   - export PATH="${BIN}:$PATH"; echo $PATH
-  - echo -e "ansible>=2.4\nmolecule>=2.6\ntestinfra>=1.10\npython-vagrant>=0.5.15" > $HOME/ansible/requirements.txt
+  - echo -e "ansible>=2.4\nmolecule>=2.6\ntestinfra>=1.10\npython-vagrant>=0.5.15\napache-libcloud" > $HOME/ansible/requirements.txt
   - pip install -r $HOME/ansible/requirements.txt
   - git version; ansible --version; molecule --version
 notifications:
