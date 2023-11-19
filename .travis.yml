@@ -13,10 +13,18 @@ script:
 after_script:
   - molecule destroy
 before_install:
+  - wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+  - sudo apt update && sudo apt install -y ansible ansible-lint unzip git curl wget molecule
   - git log -1 --format='%H'
   - git config --local gc.auto 0
   - git config --global --add safe.directory '*'
+  - mkdir -p $HOME/.ansible
+  - ls -Alh $HOME/bin/; ls -Alh $HOME/
+  - export PATH="${BIN}:$PATH"; echo $PATH
+  - git version; ansible --version; ansible-lint --version; molecule --version
 notifications:
   email:
     on_success: change
     on_failure: always
+
