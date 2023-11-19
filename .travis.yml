@@ -1,9 +1,9 @@
 ---
 language: python
 python:
-  - '3.9'
+  - '3.11'
 install:
-  - pip3 install ansible molecule testinfra python-vagrant apache-libcloud pip3 urllib3
+  - pip3 install ansible molecule testinfra python-vagrant apache-libcloud urllib3
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd
