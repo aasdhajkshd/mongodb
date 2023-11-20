@@ -10,6 +10,8 @@ addons:
   apt:
     packages:
       - docker-ce
+env:
+  - DOCKER_USERNAME=23f03013e37f
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd/mongodb
