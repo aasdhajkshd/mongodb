@@ -6,11 +6,16 @@ install:
   - pip3 install ansible molecule testinfra vagrant python-vagrant apache-libcloud urllib3==1.26.6 docker yamllint flake8 ansible-lint molecule-docker
 services:
   - docker
+addons:
+  apt:
+    packages:
+      - docker-ce
 script:
   - find ~/ -name 'aasdhajkshd*'
   - cd $HOME/build/aasdhajkshd/mongodb
   - git version; ansible --version; molecule --version
   - set
+  - docker --version
   - molecule create
   - molecule converge
   - molecule verify
@@ -28,4 +33,3 @@ notifications:
   email:
     on_success: change
     on_failure: always
-
